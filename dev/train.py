@@ -2,8 +2,11 @@ import os
 import sys
 from tensorflow.keras.callbacks import ModelCheckpoint, TensorBoard, EarlyStopping
 
+# Obtener la ruta del directorio padre (raíz del proyecto)
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 # Añadir el directorio padre al path para importar utils
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(project_root)
 from utils import load_data, split_data, create_model
 
 # cargar el dataset
@@ -14,7 +17,8 @@ data = split_data(X, y, test_size=0.1, valid_size=0.1)
 model = create_model()
 
 # usar tensorboard para ver métricas
-tensorboard = TensorBoard(log_dir="logs")
+log_dir = os.path.join(project_root, "logs")
+tensorboard = TensorBoard(log_dir=log_dir)
 # definir parada temprana para detener el entrenamiento después de 5 épocas sin mejora
 early_stopping = EarlyStopping(mode="min", patience=5, restore_best_weights=True)
 
@@ -26,7 +30,9 @@ model.fit(data["X_train"], data["y_train"], epochs=epochs, batch_size=batch_size
           callbacks=[tensorboard, early_stopping])
 
 # guardar el modelo en un archivo
-model.save("../results/model.h5")
+model_path = os.path.join(project_root, "results", "model.h5")
+print(f"Guardando modelo en: {model_path}")
+model.save(model_path)
 
 # evaluar el modelo usando el conjunto de prueba
 print(f"Evaluando el modelo usando {len(data['X_test'])} muestras...")
