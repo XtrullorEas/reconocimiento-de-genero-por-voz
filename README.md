@@ -45,19 +45,19 @@ Este proyecto implementa un modelo de red neuronal profunda que puede determinar
 ├── 📄 utils.py             # Funciones auxiliares y modelo
 ├── 📄 requirements.txt     # Dependencias
 ├── 📄 balanced-all.csv     # Dataset con rutas y etiquetas
-├── 📄 README.md           # Este archivo
-├── 📁 results/            # Modelo entrenado y características
-│   ├── model.h5          # Modelo de TensorFlow entrenado
-│   ├── features.npy      # Características extraídas
-│   └── labels.npy        # Etiquetas correspondientes
-├── 📁 data/              # Datos de entrenamiento (archivos .npy)
+├── 📄 README.md            # Este archivo
+├── 📁 results/             # Modelo entrenado y características
+│   ├── model.h5            # Modelo de TensorFlow entrenado
+│   ├── features.npy        # Características extraídas
+│   └── labels.npy          # Etiquetas correspondientes
+├── 📁 data/               # Datos de entrenamiento (archivos .npy)
 │   ├── cv-other-train/
 │   ├── cv-other-dev/
 │   ├── cv-other-test/
 │   ├── cv-valid-train/
 │   ├── cv-valid-dev/
 │   └── cv-valid-test/
-├── 📁 test-samples/      # Muestras de audio para pruebas
+├── 📁 test-samples/       # Muestras de audio para pruebas
 │   ├── hombre.wav
 │   ├── mujer1.wav
 │   └── mujer2.wav
@@ -160,6 +160,8 @@ Salida (0=Mujer, 1=Hombre)
 
 Si deseas entrenar el modelo desde cero:
 
+**⚠️ IMPORTANTE:** Antes de ejecutar, renombra el archivo `model.h5` existente en la carpeta `results/` (ej: `model_backup.h5`) para evitar sobrescribirlo.
+
 ```bash
 python dev/train.py
 ```
@@ -173,21 +175,22 @@ python dev/train.py
 La carpeta `dev/` contiene herramientas adicionales para desarrollo:
 
 - **`dev/train.py`** - Script para entrenar el modelo desde cero con tus propios datos
-- **`dev/preparation.py`** - Script para procesar archivos de audio originales y extraer características
+- **`dev/preparation.py`** - Script para procesar archivos de audio originales de Kaggle/Mozilla Common Voice y extraer características
 - **`dev/LICENSE`** - Información de licencia del proyecto
 
 Estos archivos no son necesarios para el funcionamiento básico del reconocimiento de género, pero son útiles si quieres:
 - Entrenar el modelo con nuevos datos
 - Modificar la arquitectura del modelo
-- Procesar tus propios archivos de audio
+- Procesar archivos de audio originales del dataset de Kaggle
 
 ### Preparación de Datos Personalizados
 
-Si tienes archivos de audio propios y quieres entrenar un modelo personalizado:
+Si tienes archivos de audio originales de Kaggle/Mozilla Common Voice y quieres entrenar un modelo personalizado:
 
 1. Organiza tus archivos según la estructura esperada
-2. Ejecuta `python dev/preparation.py` para extraer características
-3. Ejecuta `python dev/train.py` para entrenar el modelo
+2. Ejecuta `python dev/preparation.py` para extraer características y generar la carpeta `data/`
+3. **Importante:** Respalda el modelo actual renombrando `results/model.h5` antes del siguiente paso
+4. Ejecuta `python dev/train.py` para entrenar el modelo
 
 ## 🎵 Características de Audio Soportadas
 
