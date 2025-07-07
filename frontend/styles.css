@@ -1,0 +1,306 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.api-config {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.api-config input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    min-width: 300px;
+}
+
+.api-config button {
+    padding: 12px 24px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.api-config button:hover {
+    background: #5a67d8;
+    transform: translateY(-2px);
+}
+
+.upload-section, .record-section {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.upload-section h2, .record-section h2 {
+    margin-bottom: 20px;
+    color: #4a5568;
+}
+
+.upload-zone {
+    border: 3px dashed #cbd5e0;
+    border-radius: 15px;
+    padding: 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #f7fafc;
+}
+
+.upload-zone:hover {
+    border-color: #667eea;
+    background: #edf2f7;
+}
+
+.upload-zone.dragover {
+    border-color: #667eea;
+    background: #e6fffa;
+}
+
+.upload-icon {
+    font-size: 4rem;
+    margin-bottom: 15px;
+}
+
+.file-types {
+    color: #718096;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+#recordBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px 40px;
+    font-size: 1.2rem;
+    background: #48bb78;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 auto;
+    min-width: 200px;
+}
+
+#recordBtn:hover:not(:disabled) {
+    background: #38a169;
+    transform: scale(1.05);
+}
+
+#recordBtn:disabled {
+    background: #a0aec0;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.recording {
+    background: #e53e3e !important;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.recording-info {
+    text-align: center;
+    margin-top: 15px;
+    color: #4a5568;
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.results {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.result-card {
+    text-align: center;
+}
+
+.gender-display {
+    margin-bottom: 30px;
+}
+
+.gender-icon {
+    font-size: 5rem;
+    margin-bottom: 15px;
+}
+
+.gender-display h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #2d3748;
+}
+
+.probabilities {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.prob-bar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.prob-bar label {
+    min-width: 100px;
+    font-weight: 600;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 20px;
+    background: #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+.progress.male {
+    background: linear-gradient(90deg, #4299e1, #3182ce);
+}
+
+.progress.female {
+    background: linear-gradient(90deg, #ed64a6, #d53f8c);
+}
+
+.error {
+    background: #fed7d7;
+    color: #9b2c2c;
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 5px solid #e53e3e;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.success {
+    background: #c6f6d5;
+    color: #22543d;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .api-config {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .api-config input {
+        min-width: auto;
+    }
+    
+    .prob-bar {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+    
+    .prob-bar label {
+        min-width: auto;
+    }
+}

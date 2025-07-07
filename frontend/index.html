@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎤 Reconocimiento de Género por Voz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎤 Reconocimiento de Género por Voz</h1>
+            <p>Sube un archivo de audio o graba tu voz para detectar si es masculina o femenina</p>
+        </header>
+
+        <div class="api-config">
+            <label for="apiUrl">🔗 URL de la API:</label>
+            <input type="text" id="apiUrl" placeholder="https://tu-api.onrender.com">
+            <button onclick="testConnection()" id="testBtn">Probar Conexión</button>
+        </div>
+
+        <div class="upload-section">
+            <h2>📁 Subir Archivo de Audio</h2>
+            <div class="upload-zone" id="uploadZone">
+                <div class="upload-icon">🎵</div>
+                <p>Arrastra un archivo de audio aquí o haz clic para seleccionar</p>
+                <p class="file-types">Formatos soportados: WAV, MP3, FLAC, M4A</p>
+                <input type="file" id="fileInput" accept="audio/*" hidden>
+            </div>
+        </div>
+
+        <div class="record-section">
+            <h2>🎤 Grabar desde Micrófono</h2>
+            <button id="recordBtn" onclick="toggleRecording()" disabled>
+                <span id="recordIcon">🎤</span>
+                <span id="recordText">Grabar Audio</span>
+            </button>
+            <div class="recording-info">
+                <p id="recordingStatus"></p>
+            </div>
+        </div>
+
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Analizando audio...</p>
+        </div>
+
+        <div id="results" class="results hidden">
+            <h2>📊 Resultados del Análisis</h2>
+            <div class="result-card">
+                <div class="gender-display">
+                    <div id="genderIcon" class="gender-icon"></div>
+                    <h3 id="genderText"></h3>
+                    <p id="confidenceText"></p>
+                </div>
+                <div class="probabilities">
+                    <div class="prob-bar">
+                        <label>👨 Masculino</label>
+                        <div class="progress-bar">
+                            <div id="maleProgress" class="progress male"></div>
+                        </div>
+                        <span id="malePercent"></span>
+                    </div>
+                    <div class="prob-bar">
+                        <label>👩 Femenino</label>
+                        <div class="progress-bar">
+                            <div id="femaleProgress" class="progress female"></div>
+                        </div>
+                        <span id="femalePercent"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="error" class="error hidden">
+            <h3>❌ Error</h3>
+            <p id="errorMessage"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Desarrollado con ❤️ usando Machine Learning</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
